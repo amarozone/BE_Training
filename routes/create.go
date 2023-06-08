@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 	"time"
+
 	"github.com/gin-gonic/gin"
 )
 func PostLaptops(c *gin.Context) {
