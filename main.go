@@ -2,7 +2,7 @@ package main
 
 import (
 	routes "CRUD_API/routes"
-	"fmt"
+	// "fmt"
 	// "fmt"
 	"net/http"
 
@@ -19,9 +19,9 @@ func authMiddleware() gin.HandlerFunc {
     return func(c *gin.Context) {
         // Get the JWT token from the request header
 
-        tokenString1 := c.GetHeader("Authorization")
-		tokenString := tokenString1[7:]
-		fmt.Println("this is middleware token",tokenString)
+        tokenString := c.GetHeader("Authorization")
+		// tokenString := tokenString1[7:]
+		// fmt.Println("this is middleware token",tokenString)
         // Parse the token
         token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
             // Provide the secret key used for signing the token
@@ -54,7 +54,7 @@ func main() {
     public := router.Group("/api")
 
 	public.POST("/register", routes.Register)
-	public.POST("/login",routes.Login)
+	// public.POST("/login",routes.Login)
 	//received the token from login
 
 	protected := router.Group("/api/admin")
