@@ -16,3 +16,5 @@ func (h *LaptopHandler) DeleteLaptop(c *gin.Context) {
 	}
 	c.JSON(http.StatusCreated, gin.H{"message": "Article deleted successfully"})
 }
+
+

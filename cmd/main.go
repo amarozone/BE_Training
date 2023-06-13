@@ -49,8 +49,6 @@ func authMiddleware() gin.HandlerFunc {
 func main() {
     router := gin.Default()
 
-    public := router.Group("/api")
-
 
 
 
@@ -59,10 +57,10 @@ func main() {
 	laptopStore := stores.NewLaptopStore()
 	laptopService := services.NewLaptopService(laptopStore)
 	laptopHandler := handlers.NewLaptopHandler(laptopService)
-	public.POST("/laptop", laptopHandler.PostLaptops)
-	public.PUT("laptop/:laptopBrand", laptopHandler.UpdateLaptop)
-	public.DELETE("laptop/:laptopBrand", laptopHandler.DeleteLaptop)
-	public.GET("laptop/:laptopBrand", laptopHandler.GetLaptops)
+	router.POST("/laptop", laptopHandler.PostLaptops)
+	router.PUT("laptop/:laptopBrand", laptopHandler.UpdateLaptop)
+	router.DELETE("laptop/:laptopBrand", laptopHandler.DeleteLaptop)
+	router.GET("laptop/:laptopBrand", laptopHandler.GetLaptops)
 
 
 
@@ -71,7 +69,7 @@ func main() {
 
 
 
-	public.POST("/register", routes.Register)
+	// public.POST("/register", routes.Register)
 	// public.POST("/login",routes.Login)
 	//received the token from login
 

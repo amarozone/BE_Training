@@ -23,6 +23,16 @@ func NewLaptopStore() *LaptopStore {
 	}
 }
 
+type UserStore struct {
+	DB *mongo.Database
+}
+
+func NewUserStore() *UserStore {
+	return &UserStore{
+		DB:database.GetDB(),
+	}
+}
+
 func (s *LaptopStore) PostLaptops(laptop *model.Laptops) error {
 	postCollection := s.DB.Collection("Laptops")
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
@@ -98,7 +108,20 @@ func (s *LaptopStore) GetLaptop(laptopBrand string) (*model.Laptops, error) {
 	return &result, nil
 }
 
+func (s *UserStore) GetUserByUsername(username string) (*model.Users, error) {
+	collection := s.DB.Collection("Users")
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
 
+	filter := bson.M{"Username": username}
+	var user model.Users
+	err := collection.FindOne(ctx, filter).Decode(&user)
+	if err != nil {
+		return nil, err
+	}
+
+	return &user, nil
+}
 
 
 
