@@ -21,6 +21,15 @@ func NewLaptopHandler(service *services.LaptopService) *LaptopHandler {
 	}
 }
 
+// PostLaptops godoc
+// @Summary      Create a laptop
+// @Description  Create a new laptop
+// @Tags         laptops
+// @Accept       json
+// @Produce      json
+// @Param        laptop body model.Laptops true "Laptop"
+// @Success      201 {string} string "Created Laptop Successfully"
+// @Router       /laptop [post]
 func (h *LaptopHandler) PostLaptops(c *gin.Context) {
 	fmt.Println("hello iam in PostLaptops handler")
 	laptop := new(model.Laptops)
@@ -35,68 +44,6 @@ func (h *LaptopHandler) PostLaptops(c *gin.Context) {
 	}
 	c.JSON(http.StatusCreated, gin.H{"message": "Posted successfully"})
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // package routes
 
@@ -116,7 +63,7 @@ func (h *LaptopHandler) PostLaptops(c *gin.Context) {
 // 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 // 	laptop := new(model.Laptops)
 // 	defer cancel()
-	
+
 // 	if err := c.BindJSON(&laptop); err != nil {
 // 	c.JSON(http.StatusBadRequest, gin.H{"message": err})
 // 	log.Fatal(err)
@@ -128,13 +75,13 @@ func (h *LaptopHandler) PostLaptops(c *gin.Context) {
 // 		Year: laptop.Year,
 // 		Price: laptop.Price,
 // 	}
-	
+
 // 	err := s.store.PostLaptops(ctx, laptopPayload)
-	
+
 // 	if err != nil {
 // 	c.JSON(http.StatusInternalServerError, gin.H{"message": err})
 // 	return
 // 	}
-	
+
 // 	c.JSON(http.StatusCreated, gin.H{"message": "Posted successfully", "Data": map[string]interface{}{"data": result}})
 //    }

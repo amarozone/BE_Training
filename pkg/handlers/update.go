@@ -9,7 +9,14 @@ import (
 )
 
 
-
+// UpdateLaptop godoc
+// @Summary      Update a laptop by brand
+// @Description  Update the details of a laptop by brand
+// @Tags         laptops
+// @Accept       json
+// @Produce      json
+// @Param        laptop body model.Laptops true "Laptop"
+// @Router       /laptops/:laptopBrand [put]
 func (h *LaptopHandler) UpdateLaptop(c *gin.Context) {
 	fmt.Println("in update laptop handler")
 	laptopBrand := c.Param("laptopBrand")

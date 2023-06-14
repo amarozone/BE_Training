@@ -1,0 +1,163 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample server celler server.",
+        "title": "Swagger Example API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/laptop": {
+            "post": {
+                "description": "Create a new laptop",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "laptops"
+                ],
+                "summary": "Create a laptop",
+                "parameters": [
+                    {
+                        "description": "Laptop",
+                        "name": "laptop",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CRUD_API_pkg_model.Laptops"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created Laptop Successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/laptop/:laptopBrand": {
+            "delete": {
+                "description": "Delete a laptop by brand",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "laptops"
+                ],
+                "summary": "Delete a laptop",
+                "parameters": [
+                    {
+                        "description": "Laptop",
+                        "name": "laptop",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CRUD_API_pkg_model.Laptops"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/laptops/:laptopBrand": {
+            "get": {
+                "description": "Retrieve a list of laptops by brand",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "laptops"
+                ],
+                "summary": "Get laptops by brand",
+                "parameters": [
+                    {
+                        "description": "Laptop",
+                        "name": "laptop",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CRUD_API_pkg_model.Laptops"
+                        }
+                    }
+                ],
+                "responses": {}
+            },
+            "put": {
+                "description": "Update the details of a laptop by brand",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "laptops"
+                ],
+                "summary": "Update a laptop by brand",
+                "parameters": [
+                    {
+                        "description": "Laptop",
+                        "name": "laptop",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CRUD_API_pkg_model.Laptops"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "CRUD_API_pkg_model.Laptops": {
+            "type": "object",
+            "properties": {
+                "brand": {
+                    "type": "string"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "year": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BasicAuth": {
+            "type": "basic"
+        }
+    },
+    "externalDocs": {
+        "description": "OpenAPI",
+        "url": "https://swagger.io/resources/open-api/"
+    }
+}

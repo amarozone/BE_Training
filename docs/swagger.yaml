@@ -1,0 +1,109 @@
+basePath: /
+definitions:
+  CRUD_API_pkg_model.Laptops:
+    properties:
+      brand:
+        type: string
+      model:
+        type: string
+      price:
+        type: string
+      year:
+        type: string
+    type: object
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server celler server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /laptop:
+    post:
+      consumes:
+      - application/json
+      description: Create a new laptop
+      parameters:
+      - description: Laptop
+        in: body
+        name: laptop
+        required: true
+        schema:
+          $ref: '#/definitions/CRUD_API_pkg_model.Laptops'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created Laptop Successfully
+          schema:
+            type: string
+      summary: Create a laptop
+      tags:
+      - laptops
+  /laptop/:laptopBrand:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a laptop by brand
+      parameters:
+      - description: Laptop
+        in: body
+        name: laptop
+        required: true
+        schema:
+          $ref: '#/definitions/CRUD_API_pkg_model.Laptops'
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete a laptop
+      tags:
+      - laptops
+  /laptops/:laptopBrand:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of laptops by brand
+      parameters:
+      - description: Laptop
+        in: body
+        name: laptop
+        required: true
+        schema:
+          $ref: '#/definitions/CRUD_API_pkg_model.Laptops'
+      produces:
+      - application/json
+      responses: {}
+      summary: Get laptops by brand
+      tags:
+      - laptops
+    put:
+      consumes:
+      - application/json
+      description: Update the details of a laptop by brand
+      parameters:
+      - description: Laptop
+        in: body
+        name: laptop
+        required: true
+        schema:
+          $ref: '#/definitions/CRUD_API_pkg_model.Laptops'
+      produces:
+      - application/json
+      responses: {}
+      summary: Update a laptop by brand
+      tags:
+      - laptops
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"
